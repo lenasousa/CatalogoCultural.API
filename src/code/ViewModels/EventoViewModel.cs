@@ -4,6 +4,7 @@ namespace CatalogoCultural.API.ViewModels
 {
     /// <summary>
     /// ViewModel para representar os dados de um evento cultural.
+    /// O EventoViewModel é uma classe que serve como um modelo de dados para a apresentação dos eventos culturais na API. Ele contém propriedades que correspondem aos campos de um evento, como nome, tipo, bairro, endereço, descrição, zona, se é gratuito ou não, valor, data, imagem, site e destaques.
     /// </summary>
     public class EventoViewModel
     {
