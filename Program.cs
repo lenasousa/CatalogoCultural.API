@@ -2,9 +2,19 @@ using Microsoft.EntityFrameworkCore;
 using CatalogoCultural.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers(); 
 
-// Adiciona os serviços para a API e para a documentação (Swagger)
+// 1. CONFIGURAÇÃO DO CORS: Permite que o Angular acesse esta API
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -15,15 +25,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-// Configura o pipeline de requisições HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// 2. ATIVAÇÃO DO CORS: Deve ficar obrigatoriamente antes de MapControllers
+app.UseCors("AllowAngularApp");
+
+// O redirecionamento HTTPS fica desativado para testes locais rápidos
+// app.UseHttpsRedirection();
+
 app.MapControllers(); 
 
-// Comando que faz a API rodar e ficar escutando requisições
 app.Run();
