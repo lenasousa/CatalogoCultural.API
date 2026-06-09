@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CatalogoCultural.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89bcf241ca1fc407c82ccb4a5fe26a7a743e87ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("CatalogoCultural.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CatalogoCultural.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
