@@ -25,6 +25,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+// =========================================================
+// CARGA INICIAL DE DADOS (SEEDER)
+// Cria um escopo temporário para usar a injeção de dependência e rodar o nosso Seeder
+// =========================================================
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    // O DataSeeder vai usar o AppDbContext para inserir os 30+ eventos
+    DataSeeder.Initialize(services);
+}
+// =========================================================
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
